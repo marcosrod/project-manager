@@ -1,0 +1,16 @@
+server:
+  port: 8301
+
+spring:
+  sql:
+    init:
+      mode: always
+  datasource:
+    url: jdbc:postgresql://localhost:5436/postgres
+    username: postgres
+    password: clientdb
+    schema: classpath:/schema.sql
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
