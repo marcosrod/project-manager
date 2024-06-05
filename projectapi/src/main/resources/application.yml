@@ -1,0 +1,22 @@
+server:
+  port: 8302
+
+spring:
+  sql:
+    init:
+      mode: always
+  datasource:
+    url: jdbc:postgresql://localhost:5437/postgres
+    username: postgres
+    password: projectdb
+    schema: classpath:/schema.sql
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+app:
+  config:
+    local-url: http://localhost
+    services:
+      client-api: ${app.config.local-url}:8301/api/clients/
