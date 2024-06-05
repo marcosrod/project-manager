@@ -1,4 +1,4 @@
-package com.marcosrod.clientapi.modules.common.enums;
+package com.marcosrod.clientapi.modules.client.enums;
 
 public enum ClientError {
     DUPLICATED_NAME("This name is already registered.");

@@ -9,7 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static com.marcosrod.clientapi.modules.common.enums.ClientError.DUPLICATED_NAME;
+import static com.marcosrod.clientapi.modules.client.enums.ClientError.DUPLICATED_NAME;
 import static com.marcosrod.clientapi.modules.helper.ClientHelper.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;

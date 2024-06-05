@@ -8,7 +8,7 @@ import com.marcosrod.clientapi.modules.common.exception.ValidationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import static com.marcosrod.clientapi.modules.common.enums.ClientError.DUPLICATED_NAME;
+import static com.marcosrod.clientapi.modules.client.enums.ClientError.DUPLICATED_NAME;
 
 @Service
 @RequiredArgsConstructor
@@ -22,6 +22,10 @@ public class ClientService {
         var savedClient = repository.save(Client.of(request));
 
         return new ClientResponse(savedClient.getId(), savedClient.getName());
+    }
+
+    public boolean existsById(Long id) {
+        return repository.existsById(id);
     }
 
     private void validateDuplicatedName(String name) {
