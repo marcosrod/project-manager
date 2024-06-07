@@ -7,13 +7,14 @@ import com.marcosrod.clientapi.modules.client.model.Client;
 public class ClientHelper {
 
     private static final String CLIENT_NAME = "john";
+    public static final Long TEST_NUMBER_ONE = 1L;
 
     public static ClientRequest getClientRequest() {
         return new ClientRequest(CLIENT_NAME);
     }
 
     public static Client getClient() {
-        return new Client(1L, CLIENT_NAME);
+        return new Client(TEST_NUMBER_ONE, CLIENT_NAME);
     }
 
     public static Client getClientWithoutId() {
@@ -21,6 +22,6 @@ public class ClientHelper {
     }
 
     public static ClientResponse getClientResponse() {
-        return new ClientResponse(1L, CLIENT_NAME);
+        return new ClientResponse(TEST_NUMBER_ONE, CLIENT_NAME);
     }
 }

@@ -11,8 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static com.marcosrod.clientapi.modules.common.helper.JsonHelper.asJsonString;
-import static com.marcosrod.clientapi.modules.helper.ClientHelper.getClientRequest;
-import static com.marcosrod.clientapi.modules.helper.ClientHelper.getClientResponse;
+import static com.marcosrod.clientapi.modules.helper.ClientHelper.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -20,6 +19,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest
 public class ClientControllerTest {
+
+    private static final String API_URI = "/api/clients";
+    private static final String URI_EXISTS = API_URI + "/1" + "/exists";
 
     @MockBean
     private ClientService service;
@@ -33,7 +35,7 @@ public class ClientControllerTest {
         var response = getClientResponse();
         doReturn(response).when(service).save(request);
 
-        mvc.perform(MockMvcRequestBuilders.post("/api/clients")
+        mvc.perform(MockMvcRequestBuilders.post(API_URI)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(asJsonString(request)))
                 .andExpect(status().isOk())
@@ -42,4 +44,30 @@ public class ClientControllerTest {
 
         verify(service).save(request);
     }
+
+    @SneakyThrows
+    @Test
+    void existsById_shouldReturnTrue_whenClientExists() {
+        doReturn(true).when(service).existsById(TEST_NUMBER_ONE);
+
+        mvc.perform(MockMvcRequestBuilders.get(URI_EXISTS))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").value(Boolean.TRUE));
+
+        verify(service).existsById(TEST_NUMBER_ONE);
+    }
+
+    @SneakyThrows
+    @Test
+    void existsById_shouldReturnFalse_whenClientDoesNotExists() {
+        doReturn(false).when(service).existsById(TEST_NUMBER_ONE);
+
+        mvc.perform(MockMvcRequestBuilders.get(URI_EXISTS))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").value(Boolean.FALSE));
+
+        verify(service).existsById(TEST_NUMBER_ONE);
+    }
+
+
 }

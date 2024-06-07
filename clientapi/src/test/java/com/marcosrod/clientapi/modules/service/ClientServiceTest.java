@@ -51,5 +51,23 @@ public class ClientServiceTest {
         verify(repository, never()).save(any());
     }
 
+    @Test
+    void existsById_shouldReturnTrue_whenClientExists() {
+        doReturn(true).when(repository).existsById(TEST_NUMBER_ONE);
 
+        assertThat(service.existsById(TEST_NUMBER_ONE))
+                .isTrue();
+
+        verify(repository).existsById(TEST_NUMBER_ONE);
+    }
+
+    @Test
+    void existsById_shouldReturnFalse_whenClientDoesNotExists() {
+        doReturn(false).when(repository).existsById(TEST_NUMBER_ONE);
+
+        assertThat(service.existsById(TEST_NUMBER_ONE))
+                .isFalse();
+
+        verify(repository).existsById(TEST_NUMBER_ONE);
+    }
 }

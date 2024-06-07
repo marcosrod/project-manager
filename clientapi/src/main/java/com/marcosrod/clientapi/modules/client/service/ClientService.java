@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 
 import static com.marcosrod.clientapi.modules.client.enums.ClientError.DUPLICATED_NAME;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class ClientService {
 
     private final ClientRepository repository;
