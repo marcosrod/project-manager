@@ -64,10 +64,6 @@ public class Project {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -80,24 +76,8 @@ public class Project {
         return status;
     }
 
-    public void setStatus(ProjectStatus status) {
-        this.status = status;
-    }
-
     public Long getClientId() {
         return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
-    }
-
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
     }
 
     public String getDescription() {
