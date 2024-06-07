@@ -21,7 +21,7 @@ public class ProjectController {
         return service.save(request);
     }
 
-    @GetMapping
+    @GetMapping("/open")
     public Page<ProjectResponse> findAllOpened(Pageable pageable) {
         return service.findAllOpened(pageable);
     }

@@ -32,10 +32,9 @@ public class TaskService {
 
     public Page<TaskResponse> findAllByProject(Pageable pageable, Long projectId) {
         var project = projectService.findById(projectId);
-        var projectName = project.getName();
 
         return repository.findAllByProject(pageable, project)
-                .map(task -> convertToResponse(task, projectId, projectName));
+                .map(task -> convertToResponse(task, projectId, project.getName()));
     }
 
     private TaskResponse convertToResponse(Task task, Long projectId, String projectName) {

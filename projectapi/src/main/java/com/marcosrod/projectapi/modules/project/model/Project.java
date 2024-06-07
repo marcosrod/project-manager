@@ -40,6 +40,14 @@ public class Project {
         this.id = id;
     }
 
+    public Project(Long id, String name, String description, ProjectStatus status, Long clientId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.status = status;
+        this.clientId = clientId;
+    }
+
     public Project(String name, String description, ProjectStatus status, Long clientId) {
         this.name = name;
         this.description = description;

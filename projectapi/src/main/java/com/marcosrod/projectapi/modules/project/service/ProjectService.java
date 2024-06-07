@@ -46,12 +46,6 @@ public class ProjectService {
                 .orElseThrow(() -> new ValidationException(ID_NOT_FOUND.getErrorMessage()));
     }
 
-    public void existsById(Long id) {
-        if (!repository.existsById(id)) {
-            throw new ValidationException(ID_NOT_FOUND.getErrorMessage());
-        }
-    }
-
     private void validateClientId(Long clientId) {
         if (!clientService.existsById(clientId)) {
             throw new ValidationException(INVALID_CLIENT.getErrorMessage());
